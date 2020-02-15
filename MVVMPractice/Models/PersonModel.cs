@@ -13,7 +13,7 @@ namespace MVVMPractice.Models
 {
     class PersonModel : ViewModelBase
     {
-        private bool mIsSelected;
+        private bool mIsSelected = false;
         public string Name { get; set; }
         public double Money { get; set; }
         public ObservableCollection<CarModel> Cars { get; set; }
@@ -50,9 +50,6 @@ namespace MVVMPractice.Models
             GotoGarageCommand = new RelayCommand(OpenGarage);
             BuyCarCommand = new RelayCommand(BuyCar);
             SellCarCommand = new RelayCommand(SellCar);
-
-
-
         }
 
         public void SelectACar(CarModel carModel)
@@ -63,7 +60,17 @@ namespace MVVMPractice.Models
 
         private void OpenGarage()
         {
+            foreach(var car in Cars)
+            {
+                if (car != SelectedCar)
+                {
+                    car.IsSelected = false;
+                }
+                
+            }
+
             IsSelected = true;
+
             App.context.ChangePage(new GarageViewModel(this), new GarageView());
         }
 

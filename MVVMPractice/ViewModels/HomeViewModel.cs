@@ -38,8 +38,17 @@ namespace MVVMPractice.ViewModels
 
         public void SelectAPerson(PersonModel selectedPerson)
         {
+
+            foreach (var person in People)
+            {
+                if (person != selectedPerson)
+                {
+                    person.IsSelected = false;
+                }
+               
+            }
+
             SelectedPerson = selectedPerson;
-           
         }
     }
 }
