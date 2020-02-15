@@ -35,7 +35,7 @@
                         <TextBlock Text="{Binding Model}" Grid.Column="1"/>
                         <TextBlock Text="{Binding Conditon}" Grid.Column="2"/>
                         <TextBlock Text="{Binding Value}" Grid.Column="3"/>
-                        <Button Content="Sell" Command="{Binding DataContext.SelectedPerson.SellCar, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" Grid.Column="4"/>
+                        <Button Content="Sell" Grid.Column="4" Command="{Binding SellButtonPressedCommand}" />
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -55,7 +55,7 @@
                         <TextBlock Text="{Binding Model}" Grid.Column="1"/>
                         <TextBlock Text="{Binding Conditon}" Grid.Column="2"/>
                         <TextBlock Text="{Binding Value}" Grid.Column="3"/>
-                        <Button Content="Buy" Grid.Column="4" Command="{Binding DataContext.SelectedPerson.BuyCar, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}"/>
+                        <Button Content="Buy" Grid.Column="4" Command="{Binding BuyButtonPressedCommand }" />
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

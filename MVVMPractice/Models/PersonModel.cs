@@ -13,60 +13,77 @@ namespace MVVMPractice.Models
 {
     class PersonModel : ViewModelBase
     {
+        private bool mIsSelected;
         public string Name { get; set; }
         public double Money { get; set; }
         public ObservableCollection<CarModel> Cars { get; set; }
 
+        public bool IsSelected
+        {
+            get
+            {
+                return mIsSelected;
+            }
+            set
+            {
+                mIsSelected = value;
+                if (value)
+                {
+                    OnSelected?.Invoke(this);
+                }
+            }
+        }
+        public CarModel SelectedCar { get; set; }
+
+        public Action<PersonModel> OnSelected { get; set; }
+
+        public ICommand GotoGarageCommand { get; set; }
+
+        public ICommand BuyCarCommand { get; set; }
+
+        public ICommand SellCarCommand { get; set; }
+
         public PersonModel()
         {
             Cars = new ObservableCollection<CarModel>();
-            _gotogarage = new DelegateCommand(OpenGarage, CanOpenGarage);
-            _buycar = new DelegateCommand(buycar, CanBuyCar);
-            _sellcar = new DelegateCommand(sellcar, CanSellCar);
+
+            GotoGarageCommand = new RelayCommand(OpenGarage);
+            BuyCarCommand = new RelayCommand(BuyCar);
+            SellCarCommand = new RelayCommand(SellCar);
+
+
+
         }
 
-        private readonly DelegateCommand _gotogarage;
-        public ICommand GoToGarage => _gotogarage;
-
-        private bool CanOpenGarage(object commandparameter)
+        public void SelectACar(CarModel carModel)
         {
-            return true;
+            SelectedCar = carModel;
+            BuyCar();
         }
-        private void OpenGarage(object commandparameter)
+
+        private void OpenGarage()
         {
+            IsSelected = true;
             App.context.ChangePage(new GarageViewModel(this), new GarageView());
         }
 
-        private readonly DelegateCommand _buycar;
-        public ICommand BuyCar => _buycar;
-
-        public bool CanBuyCar(object commandparameter)
+        private void BuyCar()
         {
-            CarModel car = (CarModel)commandparameter;
-
-            return Money > car.Value;
+            CarModel car = SelectedCar;
+            if (SelectedCar != null)
+            {
+                if (Money > car.Value)
+                {
+                    Cars.Add(car);
+                }
+            }
+            
         }
 
-        private void buycar(object commandparameter)
+        private void SellCar()
         {
-            CarModel car = (CarModel)commandparameter;
-            Money -= car.Value;
-            Cars.Add(car);
-        }
+            CarModel car = SelectedCar;
 
-        private readonly DelegateCommand _sellcar;
-        public ICommand SellCar => _sellcar;
-
-        public bool CanSellCar(object commandparameter)
-        {
-            CarModel car = (CarModel)commandparameter;
-
-            return car.Condition > 50;
-        }
-
-        private void sellcar(object commandparameter)
-        {
-            CarModel car = (CarModel)commandparameter;
             Money += car.Value;
             Cars.Remove(car);
         }
