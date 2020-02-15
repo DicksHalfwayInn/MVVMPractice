@@ -1,7 +1,7 @@
-﻿using MVVMPractice.Views;
+﻿
 using System.Windows.Controls;
 
-namespace MVVMPractice.ViewModels
+namespace MVVMPractice
 {
     public class ShellViewModel : ViewModelBase
     {

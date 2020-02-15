@@ -1,6 +1,4 @@
-﻿using MVVMPractice.ViewModels;
-using MVVMPractice.Views;
-using System.Windows;
+﻿using System.Windows;
 
 namespace MVVMPractice
 {

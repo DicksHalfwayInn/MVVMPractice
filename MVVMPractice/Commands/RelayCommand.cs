@@ -5,7 +5,7 @@
     using System.Threading.Tasks;
     using System.Windows.Input;
 
-    namespace MVVMPractice.Commands
+    namespace MVVMPractice
     {
         /// <summary>
         /// A basic command that runs an Action

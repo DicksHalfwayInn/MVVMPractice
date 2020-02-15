@@ -1,11 +1,9 @@
-﻿using MVVMPractice.Commands;
-using MVVMPractice.Models;
-using MVVMPractice.Views;
+﻿
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace MVVMPractice.ViewModels
-{
+namespace MVVMPractice
+{ 
     class HomeViewModel: ViewModelBase
     {
         

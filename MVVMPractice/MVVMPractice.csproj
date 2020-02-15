@@ -64,6 +64,8 @@
     </Compile>
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="DataModels\CarDataModel.cs" />
+    <Compile Include="DataModels\PersonDataModel.cs" />
     <Compile Include="Models\CarModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
     <Compile Include="ViewModels\GarageViewModel.cs" />

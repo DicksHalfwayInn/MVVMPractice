@@ -1,5 +1,4 @@
-﻿using MVVMPractice.Commands;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace MVVMPractice.ViewModels
+namespace MVVMPractice
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
