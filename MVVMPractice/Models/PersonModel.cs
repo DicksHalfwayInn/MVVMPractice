@@ -77,7 +77,7 @@ namespace MVVMPractice
             CarModel car = SelectedCar;
             if (SelectedCar != null)
             {
-                if (Money > car.Value)
+                if (Money > car.CarData.Value)
                 {
                     Cars.Add(car);
                 }
@@ -89,7 +89,7 @@ namespace MVVMPractice
         {
             CarModel car = SelectedCar;
 
-            Money += car.Value;
+            Money += car.CarData.Value;
             Cars.Remove(car);
         }
     }

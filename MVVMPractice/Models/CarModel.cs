@@ -11,6 +11,8 @@ namespace MVVMPractice
     {
         private bool mIsSelected = false;
 
+        public CarDataModel CarData { get; set; }
+
 
         public ICommand BuyButtonPressedCommand { get; set; }
 
